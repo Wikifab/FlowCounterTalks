@@ -1,0 +1,33 @@
+{
+	"name": "Flow Counter Talks",
+	"author": "Solene",
+	"version": "1.0.0",
+	"url": "https://www.mediawiki.org/wiki/Extension:FlowCounterTalks",
+	"descriptionmsg": "Flow Counter Talks",
+	"license-name": "GPL-2.0+",
+	"type": "parserhook",
+	"ResourceModules": {
+		"ext.flowcountertalks.js": {
+			"scripts": [
+				"resources/wikifab-style-flowcountertalks.js"			]
+		},
+		"ext.flowcountertalks.css": {
+			"styles": [
+				"resources/wikifab-style-flowcountertalks.css"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "FlowCounterTalks"
+	},
+	"AutoloadClasses": {
+		"FlowCounterTalksHooks\\Hook": "includes/FlowCounterTalksHooks.php"
+	},
+	"Hooks": {
+		"SkinTemplateNavigation": [
+			"FlowCounterTalks::onSkinTemplateNavigation"
+		]
+	},
+	"manifest_version": 1
+}
