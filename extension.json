@@ -22,11 +22,11 @@
 		"remoteExtPath": "FlowCounterTalks"
 	},
 	"AutoloadClasses": {
-		"FlowCounterTalksHooks\\Hook": "includes/FlowCounterTalksHooks.php"
+		"FlowCounterTalks\\Hook": "includes/FlowCounterTalksHooks.php"
 	},
 	"Hooks": {
 		"SkinTemplateNavigation": [
-			"FlowCounterTalks::onSkinTemplateNavigation"
+			"FlowCounterTalks\\Hook::onSkinTemplateNavigation"
 		]
 	},
 	"manifest_version": 1
