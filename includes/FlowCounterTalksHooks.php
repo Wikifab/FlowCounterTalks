@@ -32,4 +32,9 @@ class Hook {
         $links['namespaces']['talk']['count']=$counterTalk;
 
     }
+
+    public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
+        $out->addModuleStyles('ext.flowcountertalks.css');
+
+    }
 }

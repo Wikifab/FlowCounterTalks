@@ -7,10 +7,6 @@
 	"license-name": "GPL-2.0+",
 	"type": "parserhook",
 	"ResourceModules": {
-		"ext.flowcountertalks.js": {
-			"scripts": [
-				"resources/wikifab-style-flowcountertalks.js"			]
-		},
 		"ext.flowcountertalks.css": {
 			"styles": [
 				"resources/wikifab-style-flowcountertalks.css"
@@ -25,6 +21,9 @@
 		"FlowCounterTalks\\Hook": "includes/FlowCounterTalksHooks.php"
 	},
 	"Hooks": {
+		"BeforePageDisplay": [
+			"FlowCounterTalks\\Hook::onBeforePageDisplay"
+		],
 		"SkinTemplateNavigation": [
 			"FlowCounterTalks\\Hook::onSkinTemplateNavigation"
 		]
