@@ -28,9 +28,15 @@ class Hook {
         } else {
             $data = &$api->getResultData();
         }
-        $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
-        $links['namespaces']['talk']['count']=$counterTalk;
+        if (isset($links['namespaces']['talk'])){
+            $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
+            $links['namespaces']['talk']['count']=$counterTalk;
+        }
+        else {
+            $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
+            $links['namespaces']['form_talk']['count']=$counterTalk;
 
+        }
     }
 
     public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
