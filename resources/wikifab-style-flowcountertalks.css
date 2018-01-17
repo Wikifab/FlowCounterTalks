@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
 .counterTalk{
-	color:red;
+	background-color: #cdcdcd;
+	color: #fff;
+	border-radius: 3px;
+	padding: 0px 3px;
+	font-weight: bold;
+	margin-left: 4px;
+	font-size: 13px;
 }

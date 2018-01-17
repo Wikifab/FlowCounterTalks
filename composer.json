@@ -1,7 +1,5 @@
 {
-    "name": "wikifab/flow-counter-talks",
-    "description": "Extension which displays talks' number next this tab. ",
-    "type": "mediawiki-extension",
-    "require": {
-    }
+	"name" : "wikifab/flow-counter-talks",
+	"description" : "Extension which displays talks' number next this tab. ",
+	"type" : "mediawiki-extension"
 }

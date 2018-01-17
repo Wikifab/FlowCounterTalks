@@ -15,9 +15,8 @@ class Hook {
         $params = new FauxRequest(array (
             'action' => 'flow',
             'submodule'=> 'view-topiclist',
-            'page' => 'Discussion:' . $title,
-        ), true, $_SESSION );
-
+            'page' => 'Discussion:'.$title,
+        ), true, null );
 
         $enableWrite = true;
         $api = new ApiMain( $params, $enableWrite );
@@ -28,15 +27,18 @@ class Hook {
         } else {
             $data = &$api->getResultData();
         }
+        $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
+
+        // Si on est sur une page où il y a déjà un "talk" on met juste le compteur
         if (isset($links['namespaces']['talk'])){
-            $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
             $links['namespaces']['talk']['count']=$counterTalk;
         }
-        else {
-            $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
-            $links['namespaces']['form_talk']['count']=$counterTalk;
+        // Sinon on met le compteur de "form-talk" à jour avec le compteur
+        if (isset ($links['namespaces']['form_talk'])){
+              $links['namespaces']['form_talk']['count']=$counterTalk;
 
         }
+
     }
 
     public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
