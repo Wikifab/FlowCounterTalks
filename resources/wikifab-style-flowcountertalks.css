@@ -1,11 +1,18 @@
 @charset "UTF-8";
 
-.counterTalk{
-	background-color: #cdcdcd;
-	color: #fff;
-	border-radius: 3px;
-	padding: 0px 3px;
-	font-weight: bold;
-	margin-left: 4px;
-	font-size: 13px;
+.counterTalk {
+	display: inline-block;
+    min-width: 10px;
+    padding: 4px 7px 3px 7px;
+    margin-top: -2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #777777;
+    border-radius: 10px;
+    margin-left: 3px;
 }
