@@ -2,6 +2,7 @@
     "name": "wikifab/flow-counter-talks",
     "description": "This is a mediawiki extension to add a counter on discussion tab (using Flow)",
     "type": "mediawiki-extension",
+    "license": "MIT",
     "require": {
     }
 }
