@@ -19,23 +19,28 @@ class Hook {
         ), true, null );
 
         $enableWrite = true;
-        $api = new ApiMain( $params, $enableWrite );
-        $api->execute();
-        if ( defined( 'ApiResult::META_CONTENT' ) ) {
-            $data = $api->getResult()->getResultData();
+        try {
+	        $api = new ApiMain( $params, $enableWrite );
+	        $api->execute();
+	        if ( defined( 'ApiResult::META_CONTENT' ) ) {
+	            $data = $api->getResult()->getResultData();
 
-        } else {
-            $data = &$api->getResultData();
+	        } else {
+	            $data = &$api->getResultData();
+	        }
+	        $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
+        } catch (Exception $e) {
+        	trigger_error("Exception in flow api", E_USER_NOTICE);
+        	$counterTalk = 0;
         }
-        $counterTalk = count($data['flow']['view-topiclist']['result']['topiclist']['roots']);
 
         // Si on est sur une page où il y a déjà un "talk" on met juste le compteur
         if (isset($links['namespaces']['talk'])){
-            $links['namespaces']['talk']['count']=$counterTalk;
+            $links['namespaces']['talk']['count'] = $counterTalk;
         }
         // Sinon on met le compteur de "form-talk" à jour avec le compteur
         if (isset ($links['namespaces']['form_talk'])){
-              $links['namespaces']['form_talk']['count']=$counterTalk;
+              $links['namespaces']['form_talk']['count'] = $counterTalk;
 
         }
 
