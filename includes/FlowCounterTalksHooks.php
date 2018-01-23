@@ -18,9 +18,7 @@ class Hook {
 		}
 
 		$counterTalk = self::getFlowCount($title);
-		$counterTalk = self::getFlowCountUsingApi($title);
-		var_dump($counterTalk);
-
+		//$counterTalk = self::getFlowCountUsingApi($title);
 
 		// Si on est sur une page où il y a déjà un "talk" on met juste le compteur
 		if (isset($links['namespaces']['talk'])){
@@ -36,7 +34,6 @@ class Hook {
 
 	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
 		$out->addModuleStyles('ext.flowcountertalks.css');
-
 	}
 
 	/**
