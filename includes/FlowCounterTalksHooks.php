@@ -3,8 +3,48 @@ namespace FlowCounterTalks;
 use FauxRequest;
 use ApiMain;
 use Flow\Container;
+use SMW\ContentParser;
+use Title;
+use SMW\MediaWiki\Jobs\UpdateJob;
+use SMWDINumber;
+use RuntimeException;
 
 class Hook {
+
+	public static function onAPIFlowAfterExecute($module) {
+
+		//TODO doesn't seem to work
+
+		$title = $module->getTitle();
+		
+		if ( !$title instanceof Title ) {
+			throw new RuntimeException( 'Expected a title instance' );
+		}
+
+		$job = new UpdateJob( $title );
+		$job->run();
+	}
+
+	public static function onExtension() {
+
+		global $sespSpecialProperties, $sespLocalPropertyDefinitions;
+
+		//add property annotator to SESP
+		$sespSpecialProperties[] = '_FLOW_COUNTER_TALKS';
+
+		$sespLocalPropertyDefinitions['_FLOW_COUNTER_TALKS'] = [
+		    'id'    => '___FLOW_COUNTER_TALKS',
+		    'type'  => '_num',
+		    'alias' => 'flowcountertalks-talkscounter-prop',
+		    'label' => 'Talks Counter',
+		    'callback'  => function( $appFactory, $property, $semanticData ){
+
+		    	$talksCounter = self::getFlowCount( $semanticData->getSubject()->getTitle()->getDBkey());
+
+		    	return new SMWDINumber($talksCounter);
+		    }
+		];
+	}
 
 	public static function onSkinTemplateNavigation( &$content_navigation, array &$links  ) {
 
