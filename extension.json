@@ -13,6 +13,12 @@
 			]
 		}
 	},
+	"MessagesDirs": {
+		"FlowCounterTalks": [
+			"i18n"
+		]
+	},
+	"callback": "FlowCounterTalks\\Hook::onExtension",
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
 		"remoteExtPath": "FlowCounterTalks"
@@ -26,6 +32,9 @@
 		],
 		"SkinTemplateNavigation": [
 			"FlowCounterTalks\\Hook::onSkinTemplateNavigation"
+		],
+		"APIFlowAfterExecute": [
+			"FlowCounterTalks\\Hook::onAPIFlowAfterExecute"
 		]
 	},
 	"manifest_version": 1
